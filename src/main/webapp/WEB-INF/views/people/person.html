@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <h3 th:text="${person.getName()}"></h3>
+   <h3 th:text="${person.getAge()}"></h3>
+   <br>
+
+    <a th:href="@{/people/{id}/edit (id=${person.getId()})}">Edit</a>
+    <br>
+    <hr>
+   <form th:method="delete" th:action="@{/people/{id} (id=${person.getId()})}" th:object="${person}">
+       <input type="submit" value="Delete">
+   </form>
+    <div th:if="${personsbook.isEmpty()}">
+        <p>This person has not taken any books</p>
+    </div>
+
+   <div th:if="${!personsbook.isEmpty()}">
+       <hr/>
+       <p><b>Books</b></p>
+       <div th:each="book : ${personsbook}">
+           <a th:style="${book.isExpired()} ? 'color: red' : 'color: black'"
+              th:text="${book.getName()} + ', ' + ${book.getAuthor()} + ', ' + ${book.getYear()}">book </a>
+       </div>
+   </div>
+
+</body>
+</html>
