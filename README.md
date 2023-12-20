@@ -1,2 +1,2 @@
-# SpringData
-Same project using SpringData instead of Hibernate. 
+# Spring Data
+Домашнее задание для освоения Spring Data 
